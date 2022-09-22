@@ -24,12 +24,13 @@ pipeline {
             // '''
          }
       }
+      // source ${WORKSPACE} 
+               // ./scripts/test_container.ps1
       stage('Start test app') {
          steps {
             sh '''#!/bin/bash -e 
-               source ${WORKSPACE} 
-               docker-compose up -d
-               ./scripts/test_container.ps1
+               
+               docker compose up -d
             '''
          }
          post {
