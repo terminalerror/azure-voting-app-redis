@@ -12,7 +12,8 @@ pipeline {
       stage('Docker Build') {
          steps {
             sh '''#!/bin/bash -e 
-                  docker images -a
+                  docker ps
+                  docker network ps
                '''
                // source ${WORKSPACE}/
                // docker build -t jenkins-pipeline .
@@ -27,6 +28,7 @@ pipeline {
       stage('Start test app') {
          steps {
             sh '''#!/bin/bash -e 
+               source ${WORKSPACE}/ 
                docker-compose up -d
                ./scripts/test_container.ps1
             '''
