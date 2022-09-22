@@ -10,24 +10,23 @@ pipeline {
       // cd azure-vote/
       stage('Docker Build') {
          steps {
-               sh '''#!/bin/bash -e 
-                     docker images -a
-            	   '''
-            pwsh(script: 'docker images -a')
-            // pwsh(script: """
+            sh '''#!/bin/bash -e 
+                  docker images -a
+               '''
+            sh '''#!/bin/bash -e 
             //    docker images -a
             //    docker build -t jenkins-pipeline .
             //    docker images -a
             //    cd ..
-            // """)
+            '''
          }
       }
       stage('Start test app') {
          steps {
-            pwsh(script: """
+            sh '''#!/bin/bash -e 
                docker-compose up -d
                ./scripts/test_container.ps1
-            """)
+            '''
          }
          post {
             success {
@@ -40,34 +39,34 @@ pipeline {
       }
       stage('Run Tests') {
          steps {
-            pwsh(script: """
+            sh '''#!/bin/bash -e 
                pytest ./tests/test_sample.py
-            """)
+            '''
          }
       }
       stage('Stop test app') {
          steps {
-            pwsh(script: """
+            sh '''#!/bin/bash -e 
                docker-compose down
-            """)
+            '''
          }
       }
       stage('Container Scanning') {
          parallel {
             stage('Run Anchore') {
                steps {
-                  pwsh(script: """
+                  sh '''#!/bin/bash -e 
                      Write-Output "blackdentech/jenkins-course" > anchore_images
-                  """)
+                  '''
                   anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
                }
             }
             stage('Run Trivy') {
                steps {
                   sleep(time: 30, unit: 'SECONDS')
-                  // pwsh(script: """
+                  sh '''#!/bin/bash -e 
                   // C:\\Windows\\System32\\wsl.exe -- sudo trivy blackdentech/jenkins-course
-                  // """)
+                  '''
                }
             }
          }
