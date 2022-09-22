@@ -5,6 +5,7 @@ pipeline {
       stage('Verify Branch') {
          steps {
             echo "$GIT_BRANCH"
+            echo "$WORKSPACE"
          }
       }
       // cd azure-vote/
@@ -13,12 +14,14 @@ pipeline {
             sh '''#!/bin/bash -e 
                   docker images -a
                '''
-            sh '''#!/bin/bash -e 
-               docker images -a
-               docker build -t jenkins-pipeline .
-               docker images -a
-               cd ..
-            '''
+               // source ${WORKSPACE}/
+               // docker build -t jenkins-pipeline .
+            // sh '''#!/bin/bash -e 
+            //    docker images -a
+               
+            //    docker images -a
+            //    cd ..
+            // '''
          }
       }
       stage('Start test app') {
