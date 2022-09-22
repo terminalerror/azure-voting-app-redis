@@ -13,7 +13,6 @@ pipeline {
          steps {
             sh '''#!/bin/bash -e 
                   docker ps
-                  docker network ps
                '''
                // source ${WORKSPACE}/
                // docker build -t jenkins-pipeline .
