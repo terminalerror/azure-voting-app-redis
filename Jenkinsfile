@@ -13,6 +13,7 @@ pipeline {
          steps {
             sh '''#!/bin/bash -e 
                   docker ps
+                  docker network ls
                '''
                // source ${WORKSPACE}/
                // docker build -t jenkins-pipeline .
@@ -24,8 +25,6 @@ pipeline {
             // '''
          }
       }
-      // source ${WORKSPACE} 
-               // ./scripts/test_container.ps1
       stage('Start test app') {
          steps {
             sh '''#!/bin/bash -e 
