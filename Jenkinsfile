@@ -14,10 +14,10 @@ pipeline {
                   docker images -a
                '''
             sh '''#!/bin/bash -e 
-            //    docker images -a
-            //    docker build -t jenkins-pipeline .
-            //    docker images -a
-            //    cd ..
+               docker images -a
+               docker build -t jenkins-pipeline .
+               docker images -a
+               cd ..
             '''
          }
       }
