@@ -31,6 +31,7 @@ pipeline {
             sh '''#!/bin/bash -e 
                
                docker compose up -d
+               chmod +x scripts/test_container.sh
                ./scripts/test_container.sh
             '''
          }
