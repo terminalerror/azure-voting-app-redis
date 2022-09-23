@@ -53,7 +53,7 @@ pipeline {
       stage('Stop test app') {
          steps {
             sh '''#!/bin/bash -e 
-               docker-compose down
+               docker compose down
             '''
          }
       }
