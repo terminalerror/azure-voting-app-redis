@@ -62,7 +62,7 @@ pipeline {
             stage('Run Anchore') {
                steps {
                   sh '''#!/bin/bash -e 
-                     echo "jenkins/jenkins:lts" > anchore_images
+                     echo "hello-world" > anchore_images
                   '''
                   anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
                }
