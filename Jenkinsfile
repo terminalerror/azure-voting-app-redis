@@ -62,7 +62,7 @@ pipeline {
             stage('Run Anchore') {
                steps {
                   sh '''#!/bin/bash -e 
-                     echo "azure-vote-front" > anchore_images
+                     echo -e "nathanratliff/jenkins-build-agent nathanratliff/docker-dind" > anchore_images
                   '''
                   anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
                }
