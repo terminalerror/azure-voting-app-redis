@@ -62,7 +62,7 @@ pipeline {
             stage('Run Anchore') {
                steps {
                   sh '''#!/bin/bash -e 
-                     echo "blackdentech/jenkins-course" > anchore_images
+                     echo "azure-vote-front" > anchore_images
                   '''
                   anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
                }
