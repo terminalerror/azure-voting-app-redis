@@ -62,7 +62,7 @@ pipeline {
             stage('Run Anchore') {
                steps {
                   sh '''#!/bin/bash -e 
-                     echo -e "nathanratliff/jenkins-build-agent:2.2\nnathanratliff/docker-dind:1.0\ndmhs-db-updater" > anchore_images
+                     echo -e "nathanratliff/jenkins-build-agent:2.2\nnathanratliff/docker-dind:1.0" > anchore_images
                   '''
                   anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
                }
