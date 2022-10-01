@@ -57,9 +57,10 @@ pipeline {
          // parallel {
          stage('Run Anchore') {
             steps {
-               script(
+               script {
                   echo -e "hello-world" > anchore_images
-               )
+               }
+               
                // sh '''#!/bin/bash -e 
                //    echo -e "hello-world" > anchore_images
                // '''
