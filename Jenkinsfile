@@ -55,7 +55,7 @@ pipeline {
 
       stage('Container Scanning') {
          // parallel {
-         stage('Run Anchore') {
+        //  stage('Run Anchore') {
             steps {
               script {
                 sh '''#!/bin/bash -e 
@@ -66,7 +66,7 @@ pipeline {
                // nathanratliff/jenkins-build-agent:2.2\nnathanratliff/docker-dind:1.0
                anchore(bailOnFail: true, bailOnPluginFail: true, name: 'anchore_images', engineverify: true, forceAnalyze: true)
             }
-         }
+        //  }
             // stage('Run Trivy') {
             //    steps {
             //       sleep(time: 1, unit: 'SECONDS')
