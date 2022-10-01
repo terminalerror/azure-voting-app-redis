@@ -61,9 +61,13 @@ pipeline {
          parallel {
             stage('Run Anchore') {
                steps {
-                  sh '''#!/bin/bash -e 
-                     echo -e "nathanratliff/jenkins-build-agent:2.2\nnathanratliff/docker-dind:1.0" > anchore_images
-                  '''
+                  script(
+                     echo -e "hello-world" > anchore_images
+                  )
+                  // sh '''#!/bin/bash -e 
+                  //    echo -e "hello-world" > anchore_images
+                  // '''
+                  // nathanratliff/jenkins-build-agent:2.2\nnathanratliff/docker-dind:1.0
                   anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
                }
             }
