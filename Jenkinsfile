@@ -55,29 +55,14 @@ pipeline {
     }
 
     stage('Container Scanning') {
-        // parallel {
-      //  stage('Run Anchore') {
           steps {
             script {
               sh '''#!/bin/bash -e 
-                  echo -e "hello-world" > anchore_images
+                  echo -e "172.17.0.1:4510/local-repo" > anchore_images
               '''
             }
-            
-              // nathanratliff/jenkins-build-agent:2.2\nnathanratliff/docker-dind:1.0
-              //, forceAnalyze: true
-              anchore(bailOnFail: true, bailOnPluginFail: true, name: 'anchore_images', engineverify: true)
+            anchore(bailOnFail: true, bailOnPluginFail: true, name: 'anchore_images', engineverify: true)
           }
-      //  }
-          // stage('Run Trivy') {
-          //    steps {
-          //       sleep(time: 1, unit: 'SECONDS')
-          //       // sh '''#!/bin/bash -e  \nnathanratliff/keycloak:latest
-          //       // // C:\\Windows\\System32\\wsl.exe -- sudo trivy blackdentech/jenkins-course
-          //       // '''
-          //    }
-          // }
-        // }
     }
 
   }
