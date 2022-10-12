@@ -58,7 +58,7 @@ pipeline {
           steps {
             script {
               sh '''#!/bin/bash -e 
-                  echo -e "172.17.0.1:4510/local-repo" > anchore_images
+                  echo -e "localhost:4510/local-repo" > anchore_images
               '''
             }
             anchore(bailOnFail: true, bailOnPluginFail: true, name: 'anchore_images', engineverify: true)
