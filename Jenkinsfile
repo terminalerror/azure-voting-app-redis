@@ -58,7 +58,7 @@ pipeline {
           steps {
             script {
               sh '''#!/bin/bash -e 
-                  echo -e "localhost:4510/local-repo" > anchore_images
+                  echo -e "localhost.localstack.cloud:4510/voting-app" > anchore_images
               '''
             }
             anchore(bailOnFail: true, bailOnPluginFail: true, name: 'anchore_images', engineverify: true)
