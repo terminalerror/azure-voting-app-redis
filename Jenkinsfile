@@ -57,8 +57,9 @@ pipeline {
     stage('Container Scanning') {
           steps {
             script {
+              // localhost.localstack.cloud:4510/voting-app
               sh '''#!/bin/bash -e 
-                  echo -e "localhost.localstack.cloud:4510/voting-app" > anchore_images
+                  echo -e "docker.io/nathanratliff/new" > anchore_images
               '''
             }
             anchore(bailOnFail: true, bailOnPluginFail: true, name: 'anchore_images', engineverify: true)
