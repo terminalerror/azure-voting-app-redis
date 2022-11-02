@@ -59,7 +59,7 @@ pipeline {
             script {
               // localhost.localstack.cloud:4510/voting-app
               sh '''#!/bin/bash -e 
-                  echo -e "docker.io/nathanratliff/new" > anchore_images
+                  echo -e "docker.io/nathanratliff/new\ndocker.io/nathanratliff/old" > anchore_images
               '''
             }
             anchore(bailOnFail: true, bailOnPluginFail: true, name: 'anchore_images', engineverify: true)
